@@ -20,7 +20,8 @@ private[net] trait Socket {
   /** Reads bytes from the socket as a stream. */
   def reads: UStream[Chunk[Byte]]
 
-  /** Indicates that this channel will not read more data. Causes `End-Of-Stream` be signalled to `available`. */
+  /** Indicates that this channel will not read more data. Causes `End-Of-Stream` be signalled to `available`.
+    */
   def endOfInput: UIO[Unit]
 
   /** Indicates to peer, we are done writing. * */
