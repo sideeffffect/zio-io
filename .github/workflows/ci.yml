@@ -3,13 +3,13 @@ on:
   pull_request:
 jobs:
   ciJvms:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
         java: [ '1.8', '11', '17' ]
     steps:
-      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+      - uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871 # v4.2.1
         with:
           fetch-depth: 100
       - name: Fetch tags
@@ -23,7 +23,7 @@ jobs:
         run: ./sbt ci
 
   ci:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: [ ciJvms ]
     steps:
       - name: Aggregate of lint, and all tests
